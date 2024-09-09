@@ -19,11 +19,13 @@
 const path = require('path')
 // TODO: [remove] 代码块只用dark主题
 const darkTheme = require('prism-react-renderer/themes/vsDark')
+const lightTheme = require('prism-react-renderer/themes/vsLight');
+
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Apache StreamPark (incubating)',
-  tagline: 'Apache StreamPark - Make stream processing easier! Easy-to-use streaming application development framework and operation platform, with Apache Flink and Apache Spark supported.',
+  tagline: 'Apache StreamPark - Make stream processing easier! Easy-to-use streaming application development framework and operation platform, with Apache Flink® and Apache Spark™ supported.',
   url: 'https://streampark.apache.org/',
   baseUrl: '/',
   onBrokenLinks: 'ignore',
@@ -110,7 +112,7 @@ const config = {
         },
         items: [
           {
-            to: '/docs/intro',
+            to: '/docs/get-started/intro',
             label: 'Docs',
             position: "right",
             activeBaseRegex: `/docs`,
@@ -162,8 +164,12 @@ const config = {
                 to: "/community/submit_guide/code_style_and_quality_guide",
               },
               {
-                label: "How to release",
-                to: "/community/release/how_to_release",
+                label: "Documentation style guide",
+                to: "/community/submit_guide/documentation_style_guide",
+              },
+              {
+                label: "How to release version 2.1.x",
+                to: "/community/release/how_to_release_version_2.1.x",
               },
               {
                 label: "How to Verify Release",
@@ -283,7 +289,7 @@ const config = {
       },
 
       prism: {
-        theme: darkTheme,
+        theme: lightTheme,
         darkTheme: darkTheme,
         additionalLanguages: ['powershell', 'java', 'scala', 'yaml'],
         magicComments: [
