@@ -24,7 +24,7 @@ const lightTheme = require('prism-react-renderer/themes/vsLight');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Apache StreamPark (incubating)',
+  title: 'Apache StreamPark',
   tagline: 'Apache StreamPark - Make stream processing easier! Easy-to-use streaming application development framework and operation platform, with Apache Flink® and Apache Spark™ supported.',
   url: 'https://streampark.apache.org/',
   baseUrl: '/',
@@ -74,7 +74,7 @@ const config = {
           editLocalizedFiles: true,
           sidebarCollapsed: true,
           // Please change this to your repo.
-          editUrl: 'https://github.com/apache/incubator-streampark-website/edit/dev/'
+          editUrl: 'https://github.com/apache/streampark-website/edit/dev/'
         },
 
         blog: {
@@ -84,7 +84,7 @@ const config = {
           blogSidebarTitle: "近期文章",
           // Please change this to your repo.
           editUrl:
-            'https://github.com/apache/incubator-streampark-website/edit/dev/'
+            'https://github.com/apache/streampark-website/edit/dev/'
         },
         theme: {
           customCss: [
@@ -183,7 +183,7 @@ const config = {
             activeBaseRegex: `/blog`,
           },
           {
-            to: 'https://github.com/apache/incubator-streampark/issues/507',
+            to: 'https://github.com/apache/streampark/issues/507',
             position: "right",
             label: 'FAQ'
           },
@@ -206,8 +206,8 @@ const config = {
               {
                 html: `
                 <div class="subscribe-box btns">
-                  <a class="btn btn-primary" href="https://github.com/apache/incubator-streampark"><i class="fa fa-github"></i></span><span>Github</span></a>
-                  <a class="btn btn-primary" href="https://github.com/apache/incubator-streampark/issues"><i class="fa fa-slack"></i><span>Issue Tracking</span></a>
+                  <a class="btn btn-primary" href="https://github.com/apache/streampark"><i class="fa fa-github"></i></span><span>Github</span></a>
+                  <a class="btn btn-primary" href="https://github.com/apache/streampark/issues"><i class="fa fa-slack"></i><span>Issue Tracking</span></a>
                   <a class="btn btn-primary" href="javascript:void(0)">
                     <i class="fa fa-wechat"></i>
                     <span>Wechat</span>
@@ -222,20 +222,14 @@ const config = {
         copyright: `<div>
         <div>
           <div style="margin-bottom: 30px;">
-            <a href="https://incubator.apache.org/" class="footerLogoLink" one-link-mark="yes">
-              <img alt="Apache Incubator logo" class="footer__logo" width="200">
-            </a>
-          </div>
-          <div>
-            <p>
-            Apache StreamPark is an effort undergoing incubation at The Apache Software Foundation (ASF), sponsored by the Apache Incubator. Incubation is required of all newly accepted projects until a further review indicates that the infrastructure, communications, and decision making process have stabilized in a manner consistent with other successful ASF projects. While incubation status is not necessarily a reflection of the completeness or stability of the code, it does indicate that the project has yet to be fully endorsed by the ASF.
-            </p>
+              <img alt="Apache Software Foundation" class="footer__logo" width="400">
           </div>
         </div>
 
         <div>
           <span>
-            Copyright © 2022-${new Date().getFullYear()} The Apache Software Foundation. Apache StreamPark, StreamPark, and its feather logo are trademarks of The Apache Software Foundation.
+            Copyright © 2022-${new Date().getFullYear()}, The Apache Software Foundation</br>
+            Apache StreamPark, StreamPark, Apache, the Apache feather and the Apache StreamPark project logo are either registered trademarks or trademarks of the Apache Software Foundation.
           </span>
         </div>
       </div>`,
@@ -268,6 +262,17 @@ const config = {
         sidebarPath: require.resolve('./sidebars.js'),
       },
     ],
+    async function tailwindcssPlugin(context, options) {
+      return {
+          name: 'docusaurus-tailwindcss',
+          configurePostCss(postcssOptions) {
+              // Appends TailwindCSS and AutoPrefixer.
+              postcssOptions.plugins.push(require('tailwindcss'));
+              postcssOptions.plugins.push(require('autoprefixer'));
+              return postcssOptions;
+          },
+      };
+  },
     // load github info
     path.resolve(__dirname, 'plugins', 'github-info')
   ],
